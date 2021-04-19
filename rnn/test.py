@@ -48,7 +48,8 @@ def _evaluate(name_tensor):
     hidden = rnn.init_hidden()
 
     for letter_tensor in name_tensor:
-        letter_tensor.data.unsqueeze_(0)
+        # letter_tensor.data.unsqueeze_(0)
+        letter_tensor = torch.unsqueeze(letter_tensor, 0)
         output, hidden = rnn(letter_tensor, hidden)
 
     return output
